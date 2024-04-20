@@ -62,7 +62,7 @@ class Block:
         return False
 
     def collide_left_wall(self) -> None:
-        return self.col < 0
+        return self.col <= 0
 
     def collide_left_block(self, field) -> None:
         left_block = field.get_block(self.row, self.col - 1)
