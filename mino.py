@@ -37,7 +37,6 @@ class Mino:
     mino_types = ["I","J","L","O","S","Z","T"]
     mino_colors = [12,5,9,10,11,8,2]
 
-
     def __init__(self):
         mino_index = random.randint(0,6)
         self.type = Mino.mino_types[mino_index]
@@ -99,9 +98,9 @@ class Mino:
 
         for block in self.blocks:
             block.go_left()
-
-    def rotate_r(self):
+    
+    def rotate_right(self):
         pass
 
-    def rotate_l(self):
+    def rotate_left(self):
         pass

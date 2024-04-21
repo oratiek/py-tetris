@@ -1,5 +1,6 @@
 import pyxel
 import time
+import sys
 
 from mino import Mino
 from field import Field
@@ -15,26 +16,35 @@ class App:
         pyxel.run(self.update, self.draw)
 
     def update(self):
-        if self.mino.collide_bellow(self.field):
-            # fix to field
-            self.field.fix_mino(self.mino)
+        self.field.check()
 
-            self.mino = Mino()
-        
         # controller
         if pyxel.btn(pyxel.KEY_RIGHT):
             self.mino.go_right(self.field)
         elif pyxel.btn(pyxel.KEY_LEFT):
             self.mino.go_left(self.field)
+        
+        if pyxel.btn(pyxel.KEY_UP):
+            self.mino.rotate_right(self.field)
+        elif pyxel.btn(pyxel.KEY_DOWN):
+            self.mino.rotate_left(self.field)
 
         # mino go down
         self.mino.go_down(self.field)
-   
-    def clear(self):
-        pyxel.cls(0)
+        
+        # check floor collision
+        if self.mino.collide_bellow(self.field):
+            # fix to field 
+            self.field.fix_mino(self.mino) # fieldにminoを渡す
 
+            # check and clear lines
+            self.field.clear_lines()
+            
+            # renew mino
+            self.mino = Mino()
+   
     def draw(self):
-        self.clear()
+        pyxel.cls(0)
 
         self.field.draw()
         self.mino.draw()
