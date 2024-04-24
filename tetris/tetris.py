@@ -2,8 +2,8 @@ import pyxel
 import time
 import sys
 
-from mino import Mino
-from field import Field
+from tetris.mino import Mino
+from tetris.field import Field
 
 class App:
     def __init__(self):
@@ -48,6 +48,3 @@ class App:
 
         self.field.draw()
         self.mino.draw()
-
-if __name__ == "__main__":
-    App()

@@ -1,8 +1,8 @@
 import random
 import configparser 
 
-from field import Field
-from block import Block
+from tetris.field import Field
+from tetris.block import Block
 
 config = configparser.ConfigParser()
 config.read("config.ini")
